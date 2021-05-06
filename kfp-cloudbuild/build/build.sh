@@ -14,16 +14,16 @@
 # limitations under the License.
 
 # Create the kfp-util docker container image
-docker build -t gcr.io/ml-cicd-template/kfp-util:latest .
-gcloud docker -- push gcr.io/ml-cicd-template/kfp-util:latest
+docker build -t gcr.io/dna-gcp-data/kfp-util:latest .
+gcloud docker -- push gcr.io/dna-gcp-data/kfp-util:latest
 
 # Set substitutions
 SUBSTITUTIONS=\
 _REPO_URL='https://github.com/ksalama/kubeflow-examples.git',\
-_PROJECT_ID='ml-cicd-template',\
-_COMPUTE_ZONE='europe-west1-b',\
-_CLUSTER_NAME='kubeflow-cluster',\
-_GCS_LOCATION='ml-cicd-template/helloworld/pipelines',\
+_PROJECT_ID='dna-gcp-data',\
+_COMPUTE_ZONE='us-central1-b',\
+_CLUSTER_NAME='cluster-3',\
+_GCS_LOCATION='dna-gcp-data-mlops-poc/helloworld/pipelines',\
 _EXPERIMENT_NAME='helloworld-dev',\
 _TAG='latest'
 
