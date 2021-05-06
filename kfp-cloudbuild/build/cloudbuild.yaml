@@ -32,7 +32,7 @@ steps:
   waitFor: ['Run Unit Tests']
 
 # Update component specs images
-- name: 'gcr.io/ml-cicd-template/kfp-util:latest'
+- name: 'gcr.io/dna-gcp-data/kfp-util:latest'
   entrypoint: 'python3'
   args: ['pipeline/helper.py','update-specs',
          '--repo_url', 'gcr.io/${_PROJECT_ID}',
@@ -41,7 +41,7 @@ steps:
   id:  'Update Component Spec Images'
 
 # Compile pipeline
-- name: 'gcr.io/ml-cicd-template/kfp-util:latest'
+- name: 'gcr.io/dna-gcp-data/kfp-util:latest'
   entrypoint: 'dsl-compile'
   args: ['--py', 'pipeline/workflow.py',
          '--output', 'pipeline/pipeline.tar.gz',
@@ -56,7 +56,7 @@ steps:
   id:   'Upload Pipeline to GCS'
 
 # Deploy pipeline in KFP
-- name: 'gcr.io/ml-cicd-template/kfp-util:latest'
+- name: 'gcr.io/dna-gcp-data/kfp-util:latest'
   entrypoint: '/bin/sh'
   args: ['-c', '/builder/kubectl.bash;
          python3 helper.py deploy-pipeline
