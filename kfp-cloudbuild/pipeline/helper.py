@@ -23,7 +23,7 @@ from datetime import datetime
 SETTINGS_FILENAME = 'settings.yaml'
 HOST_URL = 'https://{}.endpoints.{}.cloud.goog/pipeline'
 OUTPUT_PACKAGE_PATH = 'pipeline.tar.gz'
-NAMESPACE = 'kubeflow'
+NAMESPACE = 'default'
 EXPERIMENT_NAME = 'default-experiment'
 PIPELINE_NAME = 'helloworld-pipeline'
 
@@ -56,7 +56,7 @@ def deploy_pipeline(
 
  pipeline_name = PIPELINE_NAME+"-"+version
 
- client = kfp.Client(namespace=namespace)
+ client = kfp.Client(host='https://627be4a1d4049ed3-dot-us-central1.pipelines.googleusercontent.com')
 
  pipeline = client.upload_pipeline(
    pipeline_package_path=kfp_package_path,
@@ -100,7 +100,7 @@ def main(operation, **args):
 
     namespace = NAMESPACE
     if 'namespace' in args:
-      namespace = args['namespace']
+      namespace = 'default'
 
     experiment_name = EXPERIMENT_NAME
     if 'experiment' in args:
