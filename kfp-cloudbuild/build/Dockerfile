@@ -140,6 +140,7 @@ RUN set -ex; \
 
 RUN pip3 install fire pyyaml pathlib
 RUN pip3 install --upgrade kfp
+RUN pip3 install --user --upgrade google-api-python-client
 
 ###############################################################################
 
